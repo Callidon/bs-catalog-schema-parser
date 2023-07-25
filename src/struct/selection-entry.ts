@@ -1,31 +1,16 @@
-export class Constraint {
+import Constraint from './constraint';
+import Cost from './cost';
+import { CategoryLink, EntryLink, InfoLink } from './links';
+import Modifier from './modifier';
+import Profile from './profile';
+import tagContentAsArray from './utils';
 
-}
-
-export class Profile {
-
-}
-
-export class Cost {
-
-}
-
-export class Modifier {
-
-}
-
-export class InfoLink {
-
-}
-
-export class CategoryLink {
-    
-}
-
-
+/**
+ * A entry in the catalog (unit, upgrade, etc)
+ */
 export class SelectionEntry {
     /**
-     * A entry in the catalog
+     * Constructor
      * @param name 
      * @param hidden 
      * @param collective 
@@ -39,6 +24,7 @@ export class SelectionEntry {
      * @param categoryLinks 
      */
     constructor(
+        public readonly id: string,
         public readonly name: string,
         public readonly hidden: boolean,
         public readonly collective: boolean,
@@ -48,11 +34,28 @@ export class SelectionEntry {
         public readonly profiles: Profile[],
         public readonly costs: Cost[],
         public readonly modifiers: Modifier[],
+        public readonly entryLinks: EntryLink[],
         public readonly infoLinks: InfoLink[],
         public readonly categoryLinks: CategoryLink[],
+        public readonly selectionEntries: SelectionEntry[],
     ) {}
 
-    static fromJSON(json: any) {
-        return
+    static fromJSON(json: any): SelectionEntry {
+        return new SelectionEntry(
+            json['@_id'],
+            json['@_name'],
+            json['@_hidden'],
+            json['@_collective'],
+            json['@_import'],
+            json['@_type'],
+            tagContentAsArray(json['constraints'], 'constraint').map(Constraint.fromJSON),
+            tagContentAsArray(json['profiles'], 'profile').map(Profile.fromJSON),
+            tagContentAsArray(json['costs'], 'cost').map(Cost.fromJSON),
+            tagContentAsArray(json['modifiers'], 'modifier').map(Modifier.fromJSON),
+            tagContentAsArray(json['entryLinks'], 'entryLink').map(EntryLink.fromJSON),
+            tagContentAsArray(json['infoLinks'], 'infoLink').map(InfoLink.fromJSON),
+            tagContentAsArray(json['categoryLinks'], 'categoryLink').map(CategoryLink.fromJSON),
+            tagContentAsArray(json['selectionEntries'], 'selectionEntry').map(SelectionEntry.fromJSON),
+        )
     }
 }
