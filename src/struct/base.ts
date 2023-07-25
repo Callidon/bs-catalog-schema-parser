@@ -1,7 +1,7 @@
-import { EntryLink } from './links';
-import Profile from './profile';
+import { CatalogueLink, EntryLink } from './links';
+import Profile, { ProfileType } from './profile';
 import Rule from './rule';
-import { SelectionEntry } from './selection-entry';
+import { SelectionEntry, SelectionEntryGroup } from './selection-entry';
 import tagContentAsArray from './utils';
 
 /**
@@ -68,12 +68,16 @@ export class Catalog {
         public readonly gameSystemId: string,
         public readonly gameSystemRevision: number,
         public readonly library: boolean,
+        public readonly profileTypes: ProfileType[],
         public readonly publications: Publication[],
         public readonly categoryEntries: CategoryEntry[],
+        public readonly selectionEntries: SelectionEntry[],
         public readonly sharedSelectionEntries: SelectionEntry[],
+        public readonly sharedSelectionEntryGroups: SelectionEntryGroup[],
         public readonly sharedRules: Rule[],
         public readonly sharedProfiles: Profile[],
         public readonly entryLinks: EntryLink[],
+        public readonly catalogueLinks: CatalogueLink[],
     ) {}
 
     static fromJSON(json: any) {
@@ -86,12 +90,17 @@ export class Catalog {
             json['@_gameSystemId'],
             json['@_gameSystemRevision'],
             json['@_library'],
+            tagContentAsArray(json['profileTypes'], 'profileType').map(ProfileType.fromJSON),
             tagContentAsArray(json['publications'], 'publication').map(Publication.fromJSON),
             tagContentAsArray(json['categoryEntries'], 'categoryEntry').map(CategoryEntry.fromJSON),
+            tagContentAsArray(json['selectionEntries'], 'selectionEntry').map(SelectionEntry.fromJSON),
             tagContentAsArray(json['sharedSelectionEntries'], 'selectionEntry').map(SelectionEntry.fromJSON),
+            tagContentAsArray(json['sharedSelectionEntryGroups'], 'selectionEntryGroup')
+                .map(SelectionEntryGroup.fromJSON),
             tagContentAsArray(json['sharedRules'], 'rule').map(Rule.fromJSON),
             tagContentAsArray(json['sharedProfiles'], 'profile').map(Profile.fromJSON),
             tagContentAsArray(json['entryLinks'], 'entryLink').map(EntryLink.fromJSON),
+            tagContentAsArray(json['catalogueLinks'], 'catalogueLink').map(CatalogueLink.fromJSON),
         );
     }
 }

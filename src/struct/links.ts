@@ -61,3 +61,23 @@ export class CategoryLink {
         );
     }
 }
+
+export class CatalogueLink {
+    constructor(
+        public readonly id: string,
+        public readonly name: string,
+        public readonly importRootEntries: boolean,
+        public readonly targetID: string,
+        public readonly type: string,
+    ) {}
+
+    static fromJSON(json: any) {
+        return new CatalogueLink(
+            json['@_id'],
+            json['@_name'],
+            json['@_importRootEntries'],
+            json['@_targetId'],
+            json['@_type'],
+        );
+    }
+}

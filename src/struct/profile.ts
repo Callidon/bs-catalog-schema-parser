@@ -54,3 +54,29 @@ export default class Profile {
         );
     }
 }
+
+export class CharacteristicType {
+    constructor(
+        public readonly id: string,
+        public readonly name: string,
+    ) {}
+    static fromJSON(json: any)  {
+        return new CharacteristicType(json['@_id'], json['@_name']);
+    }
+}
+
+export class ProfileType {
+    constructor(
+        public readonly id: string,
+        public readonly name: string,
+        public readonly characteristicTypes: CharacteristicType[],
+    ) {}
+
+    static fromJSON(json: any)  {
+        return new ProfileType(
+            json['@_id'],
+            json['@_name'],
+            tagContentAsArray(json['characteristicTypes'], 'characteristicType').map(CharacteristicType.fromJSON),
+        );
+    }
+}
