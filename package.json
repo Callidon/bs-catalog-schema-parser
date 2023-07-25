@@ -1,0 +1,47 @@
+{
+  "name": "bs-catalog-schema-parser",
+  "version": "1.0.0",
+  "description": "Parse Battlescribe Data (Catalog Schema) files into a high-level object representation",
+  "main": "src/index.ts",
+  "scripts": {
+    "lint": "eslint src",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Callidon/bs-catalog-schema-parser.git"
+  },
+  "keywords": [
+    "battlescribe",
+    "battlescribe data",
+    "catalog schema",
+    "warhammer",
+    "warhammer 40 000",
+    "warhammer 40k",
+    "40k",
+    "age of sigmar",
+    "9th age",
+    "typescript"
+  ],
+  "author": "Thomas Minier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Callidon/bs-catalog-schema-parser/issues"
+  },
+  "homepage": "https://github.com/Callidon/bs-catalog-schema-parser#readme",
+  "dependencies": {
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "fast-xml-parser": "^4.2.6"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "babel-jest": "^29.6.1",
+    "eslint": "^8.0.1",
+    "jest": "^29.6.1",
+    "ts-jest": "^29.1.1",
+    "typescript": "*"
+  }
+}
