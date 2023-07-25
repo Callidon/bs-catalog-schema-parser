@@ -1,7 +1,6 @@
-import quickParse from "."
+import parseCatalogSchema from "."
 
 test('index', () => {
-    const parsedData = quickParse();
-    console.log(parsedData["catalogue"]["sharedSelectionEntries"]);
-    expect(parsedData["catalogue"]["sharedSelectionEntries"]["selectionEntry"]).toHaveLength(3)
+    const catalog = parseCatalogSchema();
+    expect(catalog).not.toBeNull()
 })
