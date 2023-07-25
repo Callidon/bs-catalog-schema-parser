@@ -56,6 +56,6 @@ export class SelectionEntry {
             tagContentAsArray(json['infoLinks'], 'infoLink').map(InfoLink.fromJSON),
             tagContentAsArray(json['categoryLinks'], 'categoryLink').map(CategoryLink.fromJSON),
             tagContentAsArray(json['selectionEntries'], 'selectionEntry').map(SelectionEntry.fromJSON),
-        )
+        );
     }
 }

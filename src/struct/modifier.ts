@@ -42,6 +42,6 @@ export default class Modifier {
             json['@_type'],
             json['@_value'],
             tagContentAsArray(json['conditions'], 'condition').map(Condition.fromJSON),
-        )
+        );
     }
 }

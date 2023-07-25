@@ -17,6 +17,6 @@ export default class Rule {
     ) {}
 
     static fromJSON(json: any) {
-        return new Rule(json['@_id'], json['@_name'], json['@_hidden'], json['description'])
+        return new Rule(json['@_id'], json['@_name'], json['@_hidden'], json['description']);
     }
 }

@@ -22,6 +22,6 @@ export default class Constraint {
             json['@_shared'],
             json['@_includeChildSelections'],
             json['@_includeChildForces'],
-        )
+        );
     }
 }

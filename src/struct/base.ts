@@ -19,7 +19,7 @@ export class Publication {
     ) {}
 
     static fromJSON(json: any) {
-        return new Publication(json['@_id'], json['@_name'])
+        return new Publication(json['@_id'], json['@_name']);
     }
 }
 
@@ -40,7 +40,7 @@ export class CategoryEntry {
     ) {}
 
     static fromJSON(json: any) {
-        return new CategoryEntry(json['@_id'], json['@_name'], json['@_hidden'])
+        return new CategoryEntry(json['@_id'], json['@_name'], json['@_hidden']);
     }
 }
 
@@ -92,6 +92,6 @@ export class Catalog {
             tagContentAsArray(json['sharedRules'], 'rule').map(Rule.fromJSON),
             tagContentAsArray(json['sharedProfiles'], 'profile').map(Profile.fromJSON),
             tagContentAsArray(json['entryLinks'], 'entryLink').map(EntryLink.fromJSON),
-        )
+        );
     }
 }

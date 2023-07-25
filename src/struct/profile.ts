@@ -17,7 +17,7 @@ export class Characteristic {
     ) {}
 
     static fromJSON(json: any) {
-        return new Characteristic(json['@_name'], json['@_typeId'], json['#text'])
+        return new Characteristic(json['@_name'], json['@_typeId'], json['#text']);
     }
 }
 
@@ -51,6 +51,6 @@ export default class Profile {
             json['@_typeId'],
             json['@_typeName'],
             tagContentAsArray(json['characteristics'], 'characteristic').map(Characteristic.fromJSON),
-        )
+        );
     }
 }

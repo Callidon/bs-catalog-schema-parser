@@ -18,7 +18,7 @@ export class EntryLink {
             json['@_type'],
             json['@_collective'],
             json['@_import'],
-        )
+        );
     }
 }
 
@@ -38,7 +38,7 @@ export class InfoLink {
             json['@_hidden'],
             json['@_targetId'],
             json['@_type'],
-        )
+        );
     }
 }
 

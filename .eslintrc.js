@@ -26,6 +26,7 @@ module.exports = {
   },
   rules: {
     quotes: ["error", "single"],
+    semi: ["error", "always"],
     'max-len': ['error', 120, 4],
     camelcase: 0,
     'no-plusplus': 0,

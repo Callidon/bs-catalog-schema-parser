@@ -9,6 +9,6 @@ export default class Cost {
     ) {}
 
     static fromJSON(json: any) {
-        return new Cost(json['@_name'], json['@_typeId'], json['@_value'])
+        return new Cost(json['@_name'], json['@_typeId'], json['@_value']);
     }
 }
